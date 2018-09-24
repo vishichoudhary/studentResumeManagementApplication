@@ -4,4 +4,5 @@ module.exports = {
     controllers: require('./controllers'),
     responses: require('./responses'),
     resources: require('./resources'),
+    setup: require('./setup')
 }
