@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "vishal",
+    "password": "vishalpassword",
+    "database": "LH_Db",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

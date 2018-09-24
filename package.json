@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for localhelper",
+  "main": "app.js",
+  "scripts": {
+    "dev": "pm2 start dev.pm2.config.js && pm2 logs lhBackend",
+    "logs": "pm2 logs lhBackend",
+    "restart": "pm2 restart dev.pm2.config.js && pm2 logs lhBackend",
+    "stop": "pm2 stop lhBackend && pm2 delete lhBackend",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vishal choudhary",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "lodash": "^4.17.10",
+    "morgan": "^1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "redis": "^2.8.0",
+    "sequelize": "^4.37.10",
+    "sequelize-cli": "^4.0.0"
+  }
+}
