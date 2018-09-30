@@ -4,14 +4,15 @@ const morgan = require('morgan');
 //for connection etc things which should we made before server is ready
 require('setup');
 const bodyParser = require('body-parser');
+const config = require('./config');
 
-app.listen(5000, function() {
-    console.log("server is listening on port 5000");
+app.listen(config.app.port, function() {
+    console.log("server is listening on port " + config.app.port);
 });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
- 
+
 // parse application/json
 app.use(bodyParser.json());
 

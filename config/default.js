@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = {
+    app: {
+        port: 3003
+    },
     database: {
         MYSQLDBHostname: '',
         MYSQLDBUsername: '',
