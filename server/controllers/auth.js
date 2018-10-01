@@ -50,7 +50,7 @@ module.exports = {
                         from: config.mailer.user,
                         to: student.email, subject: 'Account Verification Token',
                         text: 'Hello,\n\n' +
-                            'Please verify your account by clicking the link: \nhttp:\/\/' + req.headers.host + '\/confirmation\/' + token.token + '.\n'
+                            'Please verify your account by clicking the link: \n' + config.endpoints.confirm + "/" + token.token + '.\n'
                     };
                     transporter.sendMail(mailOptions, function (err) {
                         if (err) { return res.status(500).send({ msg: err.message }); }

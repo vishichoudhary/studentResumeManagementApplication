@@ -28,5 +28,10 @@ module.exports = {
     mailer: {
         user: '',
         pass: ''
+    },
+    endpoints: {
+        login: 'http://localhost:3003/api/v1/login', 
+        signup: 'http://localhost:3003/api/v1/signup', 
+        confirm: 'http://localhost:3003/api/v1/confirm', 
     }
 }
