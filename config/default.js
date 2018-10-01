@@ -24,5 +24,9 @@ module.exports = {
         elasticRequestTimeout: 1000, /* in microseconds */
         requestTimeoutSequelize: 30000, /* in microseconds */
         dnlMobileVerificationTtl: 30000 /* in microseconds */
+    },
+    mailer: {
+        user: '',
+        pass: ''
     }
 }

@@ -13,12 +13,14 @@ var schema = new mongoose.Schema({
     lastName: String,
     email: String,
     isVerified: Boolean,
+    password: String,
     mobileNo: {
         type: String,
         min: 10,
         max: 10
     },
     branch: String,
+    rollNo: String
 });
 
 module.exports = mongoose.model('studentDb', schema);
