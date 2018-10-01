@@ -13,6 +13,7 @@ module.exports = {
     login: function (req, res, next) {
         next();
     },
+
     signup: function (req, res, next) {
         Student.findOne({ email: req.body.email }, function (err, student) {
             if (student) return res.status(400).send({
@@ -47,15 +48,41 @@ module.exports = {
                         }
                     });
                     var mailOptions = {
-                        from: config.mailer.user,
+                        from: config.mailer.student,
                         to: student.email, subject: 'Account Verification Token',
                         text: 'Hello,\n\n' +
-                            'Please verify your account by clicking the link: \n' + config.endpoints.confirm + "/" + token.token + '.\n'
+                            'Please verify your account by clicking the link: \n' + config.endpoints.confirm + "?token=" + token.token + '.\n'
                     };
                     transporter.sendMail(mailOptions, function (err) {
                         if (err) { return res.status(500).send({ msg: err.message }); }
                         res.status(200).send('A verification email has been sent to ' + student.email + '.');
                     });
+                });
+            });
+        });
+    },
+
+    confirm: function (req, res, next) {
+        Token.findOne({ token: req.query.token }, function (err, token) {
+            if (!token) return res.status(400).send({
+                type: 'not-verified',
+                msg: 'We were unable to find a valid token. Your token my have expired.'
+            });
+            Student.findOne({ _id: token._id }, function (err, student) {
+                if (!student) return res.status(400).send({
+                    msg: 'We were unable to find a student for this token.'
+                });
+                if (student.isVerified) return res.status(400).send({
+                    type: 'already-verified',
+                    msg: 'This student has already been verified.'
+                });
+
+                student.isVerified = true;
+                student.save(function (err) {
+                    if (err) {
+                        res.status(500).send({ msg: err.message });
+                    }
+                    res.status(200).send("The account has been verified. Please log in.");
                 });
             });
         });

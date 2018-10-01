@@ -30,8 +30,8 @@ module.exports = {
         pass: ''
     },
     endpoints: {
-        login: 'http://localhost:3003/api/v1/login', 
-        signup: 'http://localhost:3003/api/v1/signup', 
-        confirm: 'http://localhost:3003/api/v1/confirm', 
+        login: 'http://localhost:3003/api/v1/auth/login', 
+        signup: 'http://localhost:3003/api/v1/auth/signup', 
+        confirm: 'http://localhost:3003/api/v1/auth/confirm', 
     }
 }

@@ -12,6 +12,9 @@ router.route('/login')
 router.route('/signup')
     .post(authResources.signup, authControllers.signup, responses.genericResponse);
 
+router.route('/confirm')
+    .get(authResources.confirm, authControllers.confirm, responses.genericResponse);
+
 app.use('/', router);
 
 module.exports = app;

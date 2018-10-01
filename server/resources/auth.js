@@ -6,5 +6,8 @@ module.exports = {
     },
     signup: function(req, res, next){
         next();
+    },
+    confirm: function(req, res, next){
+        next();
     }
 }
