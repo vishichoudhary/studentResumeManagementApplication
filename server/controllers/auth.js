@@ -15,10 +15,15 @@ module.exports = {
     },
 
     signup: function (req, res, next) {
+        req.resp = {};
         Student.findOne({ email: req.body.email }, function (err, student) {
-            if (student) return res.status(400).send({
-                msg: 'The email address you have entered is already associated with another account.'
-            });
+            if (student) {
+                req.resp = {
+                    statusCode: 400,
+                    msg: 'The email address you have entered is already associated with another account.'
+                }
+                next();
+            };
 
             student = new Student({
                 _id: uuid.v4(),
@@ -34,11 +39,23 @@ module.exports = {
             });
 
             student.save(function (err) {
-                if (err) { return res.status(500).send({ msg: err.message }); }
+                if (err) {
+                    req.resp = {
+                        statusCode: 500,
+                        msg: err.message
+                    }
+                    next();
+                }
                 var token = new Token({ _id: student._id, token: crypto.randomBytes(16).toString('hex') });
 
                 token.save(function (err) {
-                    if (err) { return res.status(500).send({ msg: err.message }); }
+                    if (err) {
+                        req.resp = {
+                            statusCode: 500,
+                            msg: err.message
+                        }
+                        next();
+                    }
 
                     var transporter = nodemailer.createTransport({
                         service: 'gmail',
@@ -56,8 +73,18 @@ module.exports = {
                             'Please verify your account by clicking the link: \n' + config.endpoints.confirm + "?token=" + token.token + '.\n'
                     };
                     transporter.sendMail(mailOptions, function (err) {
-                        if (err) { return res.status(500).send({ msg: err.message }); }
-                        res.status(200).send('A verification email has been sent to ' + student.email + '.');
+                        if (err) {
+                            req.resp = {
+                                statusCode: 500,
+                                msg: err.message
+                            }
+                            next();
+                        }
+                        req.resp = {
+                            statusCode: 200,
+                            msg: 'A verification email has been sent to ' + student.email + '.'
+                        }
+                        next();
                     });
                 });
             });
@@ -65,28 +92,47 @@ module.exports = {
     },
 
     confirm: function (req, res, next) {
+        req.resp = {};
         Token.findOne({ token: req.query.token }, function (err, token) {
-            if (!token) return res.status(400).send({
-                type: 'not-verified',
-                msg: 'We were unable to find a valid token. Your token my have expired.'
-            });
+            if (!token) {
+                req.resp = {
+                    statusCode: 400,
+                    msg: 'We were unable to find a valid token. Your token my have expired.'
+                }
+                next();
+            };
             Student.findOne({ _id: token._id }, function (err, student) {
-                if (!student) return res.status(400).send({
-                    msg: 'We were unable to find a student for this token.'
-                });
-                if (student.isVerified) return res.status(400).send({
-                    type: 'already-verified',
-                    msg: 'This student has already been verified.'
-                });
-
-                student.isVerified = true;
-                student.save(function (err) {
-                    if (err) {
-                        res.status(500).send({ msg: err.message });
+                if (!student) {
+                    req.resp = {
+                        statusCode: 400,
+                        msg: 'We were unable to find a student for this token.'
                     }
-                    res.status(200).send("The account has been verified. Please log in.");
-                });
+                    next();
+                };
+                if (student.isVerified) {
+                    req.resp = {
+                        statusCode: 400,
+                        msg: 'This student has already been verified.'
+                    }
+                    next();
+                };
+
+            student.isVerified = true;
+            student.save(function (err) {
+                if (err) {
+                    req.resp = {
+                        statusCode: 500,
+                        msg: err.message
+                    }
+                    next();
+                }
+                req.resp = {
+                    statusCode: 200,
+                    msg: "The account has been verified. Please log in."
+                }
+                next();
             });
         });
-    }
+    });
+}
 }
