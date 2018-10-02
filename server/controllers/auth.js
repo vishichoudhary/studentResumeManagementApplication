@@ -48,7 +48,7 @@ module.exports = {
                         }
                     });
                     var mailOptions = {
-                        from: config.mailer.student,
+                        from: config.mailer.user,
                         to: student.email, subject: 'Account Verification Token',
                         text: 'Hello,\n\n' +
                             'Please verify your account by clicking the link: \n' + config.endpoints.confirm + "?token=" + token.token + '.\n'
