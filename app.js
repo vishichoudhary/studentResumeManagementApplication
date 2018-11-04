@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
+const passport = require('passport');
+
 //for connection etc things which should we made before server is ready
 require('setup');
+
 const bodyParser = require('body-parser');
 const config = require('config');
 

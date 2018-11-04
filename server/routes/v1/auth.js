@@ -15,6 +15,14 @@ router.route('/signup')
 router.route('/confirm')
     .get(authResources.confirm, authControllers.confirm, responses.genericResponse);
 
+const passport = require('passport');
+router.route('/who')
+    .post(passport.authenticate('jwt', {session: false}),function (req, res) {
+        // console.log(req.headers);
+        // passport.authenticate('jwt', {session: false});
+        console.log(req.user);
+        res.send(req.user);
+    })
 app.use('/', router);
 
 module.exports = app;

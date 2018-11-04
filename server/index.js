@@ -5,5 +5,6 @@ module.exports = {
     responses: require('./responses'),
     resources: require('./resources'),
     setup: require('./setup'),
-    utilities: require('./utilities')
+    utilities: require('./utilities'),
+    models: require('./models')
 }

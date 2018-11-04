@@ -8,14 +8,43 @@ const models = require('models'),
 const functions = require('functions'),
     uuid = functions.uuidGenerator;
 const config = require('config');
+const jwt = require('jsonwebtoken');
+const passport = require("passport");
 
 module.exports = {
     login: function (req, res, next) {
-        req.resp = {
-            statusCode: 200,
-            data: "ho gya bc",
-        }
-        next();
+        passport.authenticate('local', { session: false }, (err, user, info) => {
+            if (err || !user) {
+                req.resp = {
+                    statusCode: 400,
+                    msg: "Something is not right"
+                }
+                next();
+            }
+            else {
+                req.logIn(user, { session: false }, (err) => {
+                    if (err) {
+                        req.resp = {
+                            status: 400,
+                            msg: "Something is not right"
+                        }
+                        next();
+                    } else {
+                        const token = jwt.sign({
+                            _id:user._id,
+                            email: user.email,
+                        }, 'your_jwt_secret');
+                        req.resp = {
+                            statusCode: 200,
+                            data: {
+                                token: token
+                            }
+                        }
+                        next();
+                    }
+                });
+            }
+        })(req, res, next);
     },
 
     signup: function (req, res, next) {
