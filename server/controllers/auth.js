@@ -11,6 +11,10 @@ const config = require('config');
 
 module.exports = {
     login: function (req, res, next) {
+        req.resp = {
+            statusCode: 200,
+            data: "ho gya bc",
+        }
         next();
     },
 
@@ -117,22 +121,22 @@ module.exports = {
                     next();
                 };
 
-            student.isVerified = true;
-            student.save(function (err) {
-                if (err) {
+                student.isVerified = true;
+                student.save(function (err) {
+                    if (err) {
+                        req.resp = {
+                            statusCode: 500,
+                            msg: err.message
+                        }
+                        next();
+                    }
                     req.resp = {
-                        statusCode: 500,
-                        msg: err.message
+                        statusCode: 200,
+                        msg: "The account has been verified. Please log in."
                     }
                     next();
-                }
-                req.resp = {
-                    statusCode: 200,
-                    msg: "The account has been verified. Please log in."
-                }
-                next();
+                });
             });
         });
-    });
-}
+    }
 }
