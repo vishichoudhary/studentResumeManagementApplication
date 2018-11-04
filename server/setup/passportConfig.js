@@ -15,11 +15,9 @@ passport.use(new LocalStrategy({
     function (email, password, cb) {
         Student.findOne({ email: email, password: password }, function (err, user) {
             if (!user) {
-                console.log("i am in if");
                 return cb(null, false, { message: 'Incorrect email or password.' });
             }
             else {
-                console.log("i am in else");
                 return cb(null, user, { message: 'Logged In Successfully' });
             }
         });
@@ -31,7 +29,6 @@ passport.use(new JWTStrategy({
     secretOrKey: 'your_jwt_secret'
 },
     function (jwtPayload, cb) {
-        console.log(jwtPayload);
         return Student.findOne({_id: jwtPayload._id})
             .then(user => {
                 return cb(null, user);
