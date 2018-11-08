@@ -1,0 +1,91 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+body {
+  background-color:   #9881cb;
+  padding: 20px;
+  margin: 0;
+}
+h1, h2, p, ul, li {
+  font-family: sans-serif;
+}
+ul.header li {
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+}
+ul.header {
+  background-color: #111;
+  padding: 0;
+}
+ul.header li a {
+  color: #FFF;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 20px;
+  display: inline-block;
+}
+.contents {
+  background-color: #FFF;
+  padding: 20px;
+}
+.contents h2 {
+  padding: 0;
+  margin: 0;
+}
+.contents li {
+  margin-bottom: 10px;
+}
+.active {
+  background-color: #0099FF;
+}
+
+
+table,td, th {
+  border: 2px solid black;
+  padding: 8px;
+}
+
+@media screen and (max-width: 600px) {
+  table,td, th {
+    border: 1px solid black;
+    padding: 0px;
+    font-size: 12px;
+  }
+}
+
+.Loginportion form{
+  padding: 10px;
+  box-shadow: 5px 10px 18px #888888;
+  background-color: #ffffff;
+}
+
+.logout{
+  float: right;
+}
