@@ -1,23 +1,33 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "backend for localhelper",
-  "main": "app.js",
-  "scripts": {
-    "dev": "pm2 start dev.pm2.config.js && pm2 logs lhBackend",
-    "logs": "pm2 logs lhBackend",
-    "restart": "pm2 restart dev.pm2.config.js && pm2 logs lhBackend",
-    "stop": "pm2 stop lhBackend && pm2 delete lhBackend",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "vishal choudhary",
-  "license": "ISC",
+  "name": "majorproject",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.3",
-    "lodash": "^4.17.10",
-    "mongoose": "^5.2.17",
-    "morgan": "^1.9.0",
-    "redis": "^2.8.0"
-  }
+    "@material-ui/core": "^3.4.0",
+    "axios": "^0.18.0",
+    "material-ui": "^0.20.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-dropzone": "^3.10.0",
+    "react-file-tree": "0.0.8",
+    "react-router-dom": "^4.0.0",
+    "react-scripts": "2.1.1",
+    "react-tap-event-plugin": "^3.0.3",
+    "superagent": "^3.4.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
