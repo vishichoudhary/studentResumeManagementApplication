@@ -23,6 +23,10 @@ router.route('/who')
         console.log(req.user);
         res.send(req.user);
     })
+
+router.route('/all')
+    .get(authResources.all, authControllers.all, responses.genericResponse);
+
 app.use('/', router);
 
 module.exports = app;

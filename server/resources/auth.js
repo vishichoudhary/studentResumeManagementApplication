@@ -9,5 +9,8 @@ module.exports = {
     },
     confirm: function(req, res, next){
         next();
+    },
+    all: function(req, res, next){
+        next();
     }
 }

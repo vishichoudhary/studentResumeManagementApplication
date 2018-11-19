@@ -174,5 +174,24 @@ module.exports = {
                 });
             }
         });
+    },
+
+    all: function (req, res, next) {
+        Student.find({}, function (err, data) {
+            if (err) {
+                req.resp = {
+                    statusCode: 500,
+                    msg: err.message
+                }
+                next();
+            }
+            else {
+                req.resp = {
+                    statusCode: 200,
+                    data: data
+                }
+                next();
+            }
+        })
     }
 }
