@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-    auth: require('./auth.js')
+    auth: require('./auth.js'),
+    user: require('./user')
 }

@@ -28,6 +28,7 @@ app.all('*', function(req, res, next){
     req.resp = {}
     next();
 })
+
 // setup routes
 app.use(require('routes'));
 

@@ -1,5 +1,6 @@
 "use strict";
 
 module.exports = {
-    uuidGenerator: require('./uuidGenerator')
+    uuidGenerator: require('./uuidGenerator'),
+    authFilter: require('./authFilter')
 }
