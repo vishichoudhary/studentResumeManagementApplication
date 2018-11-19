@@ -22,6 +22,12 @@ app.use(bodyParser.json());
 // setup the logger
 app.use(morgan('combined', {stream: process.stdout}))
 
+
+//middleware for every routes,so that i can use req.resp
+app.all('*', function(req, res, next){
+    req.resp = {}
+    next();
+})
 // setup routes
 app.use(require('routes'));
 

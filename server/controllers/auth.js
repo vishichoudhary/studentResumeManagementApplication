@@ -48,7 +48,6 @@ module.exports = {
     },
 
     signup: function (req, res, next) {
-        req.resp = {};
         Student.findOne({ email: req.body.email }, function (err, student) {
             if (student) {
                 req.resp = {
@@ -132,7 +131,6 @@ module.exports = {
     },
 
     confirm: function (req, res, next) {
-        req.resp = {};
         Token.findOne({ token: req.query.token }, function (err, token) {
             if (!token) {
                 req.resp = {
