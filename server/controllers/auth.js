@@ -49,7 +49,7 @@ module.exports = {
 
     signup: function (req, res, next) {
         Student.findOne({ email: req.body.email }, function (err, student) {
-            if (student) {
+            if (student && student.isVerified === true) {
                 req.resp = {
                     statusCode: 400,
                     msg: 'The email address you have entered is already associated with another account.'
