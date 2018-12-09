@@ -18,8 +18,6 @@ router.route('/confirm')
 const passport = require('passport');
 router.route('/who')
     .post(passport.authenticate('jwt', {session: false}),function (req, res) {
-        // console.log(req.headers);
-        // passport.authenticate('jwt', {session: false});
         console.log(req.user);
         res.send(req.user);
     })
