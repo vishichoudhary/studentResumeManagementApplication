@@ -66,7 +66,7 @@ module.exports = {
                     isVerified: false,
                     mobileNo: 0,
                     branch: "Cse dual",
-                    password: req.body.password,
+                    password: password,
                     rollNo: req.body.rollNo
                 });
 
@@ -80,7 +80,6 @@ module.exports = {
                     }
                     else {
                         var token = new Token({ _id: student._id, token: crypto.randomBytes(16).toString('hex') });
-
                         token.save(function (err) {
                             if (err) {
                                 req.resp = {
