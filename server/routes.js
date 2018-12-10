@@ -20,6 +20,27 @@ app.get('/confirm', function (req, res) {
     res.render('pages/confirm')
 });
 
+// profile page
+app.get('/profile', function (req, res) {
+    res.render('pages/profile')
+});
+
+
+// clubs page
+app.get('/clubs/:id', function(req, res){
+    res.render('pages/home')
+});
+
+//event page
+app.get('/event/:id', function(req, res){
+    res.render('pages/event')
+})
+
+//request page
+app.get('/joinClub', function(req, res){
+    res.render('pages/request')
+})
+
 require(__dirname + '/routes/').forEach(function (a) {
     app.use('/api' + a.prefix, a.app);
 });
