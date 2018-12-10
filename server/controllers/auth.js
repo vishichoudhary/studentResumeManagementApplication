@@ -37,7 +37,8 @@ module.exports = {
                         req.resp = {
                             statusCode: 200,
                             data: {
-                                token: token
+                                token: token,
+                                user: user
                             }
                         }
                         next();
