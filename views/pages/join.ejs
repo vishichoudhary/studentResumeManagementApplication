@@ -63,25 +63,25 @@
             <div id="login">
                 <h1>Welcome Back!</h1>
 
-                <form action="/" method="post">
+                <form onsubmit="return loginHandler()">
 
                     <div class="field-wrap">
                         <label>
                             Email Address<span class="req">*</span>
                         </label>
-                        <input type="email" required autocomplete="off" />
+                        <input id="loginEmail" type="email" required autocomplete="off" />
                     </div>
 
                     <div class="field-wrap">
                         <label>
                             Password<span class="req">*</span>
                         </label>
-                        <input type="password" required autocomplete="off" />
+                        <input id="loginPassword" type="password" required autocomplete="off" />
                     </div>
 
                     <p class="forgot"><a href="#">Forgot Password?</a></p>
 
-                    <button class="button button-block" />Log In</button>
+                    <button class="button button-block">Log In</button>
 
                 </form>
 
@@ -94,6 +94,26 @@
     <% include ../partial/footer %>
 
     <script>
+        function loginHandler(e) {
+            var email = document.getElementById("loginEmail");
+            var password = document.getElementById("loginPassword");
+            $.ajax({
+                method: "POST",
+                url: "http://localhost:3003/api/v1/auth/login",
+                dataType: 'json',
+                data: {
+                    email: email.value,
+                    password: password.value
+                },
+                success: function (msg) {
+                    if(msg.statusCode == 200){
+                        localStorage.setItem('token', msg.data.token);
+                        localStorage.setItem('user', JSON.stringify(msg.data.user));
+                    }
+                }
+            });
+            return false;
+        }
         $('.form').find('input, textarea').on('keyup blur focus', function (e) {
 
             var $this = $(this),

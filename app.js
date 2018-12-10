@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const passport = require('passport');
+const cors = require('cors')
 
 //for connection etc things which should we made before server is ready
 require('setup');
@@ -15,6 +16,9 @@ app.listen(config.app.port, function() {
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
+
+//use cors
+app.use(cors());
 
 // parse application/json
 app.use(bodyParser.json());
