@@ -12,13 +12,28 @@ router.route('/createClub')
         const club = new Club({
             _id: uuid.v4(),
             name: req.body.name,
-            facultyCoordinator: req.body.facultyCoordinator,
-            president: req.body.president,
-            vicePresident: req.body.vicePresident,
+            facultyCoordinator: {
+                _id: req.body.facultyCoordinator,
+                name: req.body.facultyCoordinatorName
+            },
+            president: {
+                _id: req.body.president,
+                name: req.body.presidentName
+            },
+            vicePresident: {
+                _id: req.body.vicePresident,
+                name: req.body.vicePresidentName
+            },
             totalMembers: 2,
-            members: [req.body.president, req.body.vicePresident]
+            members: [{
+                _id: req.body.president,
+                name: req.body.presidentName
+            }, {
+                _id: req.body.vicePresident,
+                name: req.body.vicePresidentName
+            }]
         });
-        club.save(function(err){
+        club.save(function (err) {
             res.send(err);
         })
     })

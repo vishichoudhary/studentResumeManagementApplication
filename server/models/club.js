@@ -10,22 +10,31 @@ var schema = new mongoose.Schema({
     },
     name: String,
     facultyCoordinator: {
-        type: String,
-        min: 36,
-        max: 36
+        _id: {
+            type: String,
+            min: 36,
+            max: 36
+        },
+        name: String
     },
     president: {
-        type: String,
-        min: 36,
-        max: 36
+        _id: {
+            type: String,
+            min: 36,
+            max: 36
+        },
+        name: String
     },
     vicePresident: {
-        type: String,
-        min: 36,
-        max: 36
+        _id: {
+            type: String,
+            min: 36,
+            max: 36
+        },
+        name: String
     },
     totalMembers: Number,
-    members: Array 
+    members: Array
 });
 
 module.exports = mongoose.model('clubsDb', schema);
