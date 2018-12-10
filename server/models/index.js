@@ -2,5 +2,6 @@
 
 module.exports = {
     student: require('./student'),
-    token: require('./token')
+    token: require('./token'),
+    club: require('./club')
 }
