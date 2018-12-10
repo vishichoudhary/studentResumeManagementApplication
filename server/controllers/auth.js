@@ -70,7 +70,10 @@ module.exports = {
                     mobileNo: 0,
                     branch: "Cse dual",
                     password: password,
-                    rollNo: req.body.rollNo
+                    rollNo: req.body.rollNo,
+                    isStudent: true,
+                    isPresident: false,
+                    clubs: []
                 });
 
                 student.save(function (err) {

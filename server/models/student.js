@@ -20,7 +20,10 @@ var schema = new mongoose.Schema({
         max: 10
     },
     branch: String,
-    rollNo: String
+    rollNo: String,
+    isStudent: Boolean,
+    isPresident: Boolean,
+    clubs: Array
 });
 
 module.exports = mongoose.model('studentDb', schema);
