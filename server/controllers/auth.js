@@ -10,6 +10,7 @@ const functions = require('functions'),
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const passport = require("passport");
+const bcrypt = require('bcrypt');
 
 module.exports = {
     login: function (req, res, next) {
@@ -58,6 +59,7 @@ module.exports = {
                 next();
             }
             else {
+                const password = bcrypt.hashSync(req.body.password, 10);
                 student = new Student({
                     _id: uuid.v4(),
                     firstName: req.body.firstName,
