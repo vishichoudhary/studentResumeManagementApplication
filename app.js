@@ -29,6 +29,12 @@ app.all('*', function(req, res, next){
     next();
 })
 
+//server public
+app.use(express.static('public'));
+
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
 // setup routes
 app.use(require('routes'));
 
