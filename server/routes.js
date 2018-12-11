@@ -27,18 +27,23 @@ app.get('/profile', function (req, res) {
 
 
 // clubs page
-app.get('/clubs/:id', function(req, res){
-    res.render('pages/home')
+app.get('/clubs/:id', function (req, res) {
+    res.render('pages/club')
 });
 
 //event page
-app.get('/event/:id', function(req, res){
+app.get('/event/:id', function (req, res) {
     res.render('pages/event')
 })
 
 //request page
-app.get('/joinClub', function(req, res){
-    res.render('pages/request')
+app.get('/joinClub', function (req, res) {
+    res.render('pages/joinClub')
+})
+
+// write application
+app.get('/requestPermission', function (req, res) {
+    res.render('pages/requestPermission');
 })
 
 require(__dirname + '/routes/').forEach(function (a) {

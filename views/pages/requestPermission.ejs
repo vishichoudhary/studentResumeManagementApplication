@@ -1,0 +1,68 @@
+<head>
+    <% include ../partial/head %>
+</head>
+
+<body class="is-preload">
+
+    <% include ../partial/header %>
+
+    <div style="display: block;">
+        <section>
+            <form method="post" action="#">
+                <div class="row gtr-uniform">
+                    <div class="col-4 col-4-xsmall">
+                        <label style="color: black">To</label>
+                    </div>
+                    <div class="col-4">
+                        <select name="demo-category" id="demo-category">
+                            <option value="">- Category -</option>
+                            <option value="1">Manufacturing</option>
+                            <option value="1">Shipping</option>
+                            <option value="1">Administration</option>
+                            <option value="1">Human Resources</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row gtr-uniform">
+                    <div class="col-4 col-4-xsmall">
+                        <label style="color: black">From</label>
+                    </div>
+                    <div class="col-4">
+                        <select name="demo-category" id="demo-category">
+                            <option value="">- Category -</option>
+                            <option value="1">Manufacturing</option>
+                            <option value="1">Shipping</option>
+                            <option value="1">Administration</option>
+                            <option value="1">Human Resources</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row gtr-uniform">
+                    <div class="col-4 col-4-xsmall">
+                        <label style="color: black">Subject</label>
+                    </div>
+                    <div class="col-4">
+                        <input type="text" style="background-color:black;"/>
+                    </div>
+                </div>
+                <div class="row gtr-uniform">
+                    <div class="col-4 col-4-xsmall">
+                        <label style="color: black">Description</label>
+                    </div>
+                </div>
+                <div class="row gtr-uniform" style="margin-top: 10px">
+                    <div class="col-12 col-12-xsmall">
+                        <input type="text" style="background-color:black; color: red"/>
+                    </div>
+                </div>
+                <div class="row gtr-uniform">
+                    <div class="col-4" style="margin-top:10px;">
+                        <input type="submit" value="Send Request" class="primary" />
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+    <% include ../partial/footer %>
+
+</body>
