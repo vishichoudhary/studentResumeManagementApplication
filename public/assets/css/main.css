@@ -102,7 +102,7 @@
   }
   
   label.highlight {
-	color: #ffffff;
+	color: #0000;
   }
   
   input, textarea {
@@ -114,21 +114,20 @@
 	background: none;
 	background-image: none;
 	border: 1px solid #a0b3b0;
-	color: #ffffff !important;
+	color: #000000;
 	border-radius: 0;
 	transition: border-color .25s ease, box-shadow .25s ease;
   }
   input:focus, textarea:focus {
 	outline: 0;
 	font-weight: 600;
-	color: #ffffff !important;
   }
   
   textarea {
 	border: 2px solid #a0b3b0;
 	font-weight: 600;
-	color: #ffffff !important;
 	resize: vertical;
+	color: #000000;
   }
   
   .field-wrap {
@@ -2302,7 +2301,7 @@ input, select, textarea {
 		border: none;
 		border-radius: 0;
 		border-bottom: solid 1px #c9c9c9;
-		color: white !important;
+		color: white;
 		font-weight: bold;
 		display: block;
 		outline: 0;
@@ -2381,7 +2380,7 @@ input, select, textarea {
 		input[type="checkbox"] + label,
 		input[type="radio"] + label {
 			text-decoration: none;
-			color: #585858;
+			color: #000000;
 			cursor: pointer;
 			display: inline-block;
 			font-size: 1em;
@@ -2391,6 +2390,7 @@ input, select, textarea {
 			position: relative;
 		}
 
+		
 			input[type="checkbox"] + label:before,
 			input[type="radio"] + label:before {
 				-moz-osx-font-smoothing: grayscale;

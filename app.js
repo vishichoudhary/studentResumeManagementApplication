@@ -30,6 +30,7 @@ app.use(morgan('combined', {stream: process.stdout}))
 //middleware for every routes,so that i can use req.resp
 app.all('*', function(req, res, next){
     req.resp = {}
+    req.headers['authorization'] = "Bearer " + req.body.token;
     next();
 })
 

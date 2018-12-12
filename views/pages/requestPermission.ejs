@@ -1,12 +1,25 @@
 <head>
     <% include ../partial/head %>
+    <style>
+     label {
+         left: 80px;
+     }
+     textarea {
+         color:black;
+         font-weight: 500;
+         margin-left: 450px;
+     }
+     textarea:focus {
+         font-weight: 500;
+     }
+    </style>
 </head>
 
 <body class="is-preload">
 
     <% include ../partial/header %>
 
-    <div style="display: block;">
+    <div style="display: block; padding-left: 80px;">
         <section>
             <form method="post" action="#">
                 <div class="row gtr-uniform">
@@ -51,8 +64,8 @@
                     </div>
                 </div>
                 <div class="row gtr-uniform" style="margin-top: 10px">
-                    <div class="col-12 col-12-xsmall">
-                        <input type="text" style="background-color:black; color: red"/>
+                    <div class="col-4 col-4-xsmall">
+                        <textarea type="text"></textarea>
                     </div>
                 </div>
                 <div class="row gtr-uniform">

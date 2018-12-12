@@ -1,13 +1,20 @@
 const express = require("express");
 const app = express();
+const passport = require('passport');
+const passportConfig = require('setup').passportConfig;
 
 app.all('/heartbeat', function (req, res, next) {
     res.send("ok");
 });
 
 // index page 
-app.get('/', function (req, res) {
-    res.render('pages/home');
+app.all('/', (req, res, next) => {
+    if(req.body.token === 'fuckerToken') 
+        res.redirect('/join');
+    else passport.authenticate('jwt', { session: false }, (err, user, info) => {
+        if(!user) res.render('pages/loader', { url: "http://localhost:3003/" });
+        else res.render('pages/home');
+    })(req, res, next);
 });
 
 // join page

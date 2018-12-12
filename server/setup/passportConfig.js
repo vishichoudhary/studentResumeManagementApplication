@@ -14,11 +14,11 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
 },
     function (email, password, cb) {
-        Student.findOne({ email: email, isVerified: true}, function (err, user) {
+        Student.findOne({ email: email, isVerified: true }, function (err, user) {
             if (!user) {
                 return cb(null, false, { message: 'Incorrect email' });
             }
-            else if(!bcrypt.compareSync(password, user.password)){
+            else if (!bcrypt.compareSync(password, user.password)) {
                 return cb(null, false, { message: 'Incorrect password' });
             }
             else {
@@ -33,7 +33,7 @@ passport.use(new JWTStrategy({
     secretOrKey: 'your_jwt_secret'
 },
     function (jwtPayload, cb) {
-        return Student.findOne({_id: jwtPayload._id})
+        return Student.findOne({ _id: jwtPayload._id })
             .then(user => {
                 return cb(null, user);
             })
