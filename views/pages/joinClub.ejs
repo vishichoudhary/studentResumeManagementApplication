@@ -89,20 +89,30 @@
                     <img src="/images/pic03.jpg" alt="" style="height:100%;" />
                 </span>
                 <a>
-                    <select name="demo-category" id="demo-category">
-                        <option value="">CSEC</option>
+                    <select name="demo-category" id="selectedClub">
+                        <option value="0">CSEC</option>
                         <option value="1">EXE</option>
-                        <option value="1">GLUG</option>
-                        <option value="1">Pixonoids</option>
-                        <option value="1">English Club</option>
+                        <option value="2">GLUG</option>
+                        <option value="3">Pixonoids</option>
+                        <option value="4">English</option>
                     </select>
                     <div class="butttons" style="margin-top: 10px">
-                        <button class="button small">Join</button>
+                        <button class="button small" onclick="joinClub()">Join</button>
                     </div>
                 </a>
             </article>
         </section>
     </div>
     <% include ../partial/footer %>
-
+    <script>
+        function getSelectedText(elementId) {
+            var elt = document.getElementById(elementId);
+            if (elt.selectedIndex == -1)
+                return null;
+            return elt.options[elt.selectedIndex].text;
+        }
+        function joinClub(){
+            console.log(getSelectedText('selectedClub'));
+        }
+    </script
 </body>

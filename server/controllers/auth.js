@@ -4,7 +4,8 @@ const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const models = require('models'),
     Student = models.student,
-    Token = models.token;
+    Token = models.token,
+    Club = models.club;
 const functions = require('functions'),
     uuid = functions.uuidGenerator;
 const config = require('config');
@@ -191,11 +192,14 @@ module.exports = {
                 next();
             }
             else {
-                req.resp = {
-                    statusCode: 200,
-                    data: data
-                }
-                next();
+                Club.find({}, function (err, newData) {
+                    req.resp = {
+                        statusCode: 200,
+                        club: newData,
+                        studentData: data
+                    }
+                    next();
+                })
             }
         })
     }
