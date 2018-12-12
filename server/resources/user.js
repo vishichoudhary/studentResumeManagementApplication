@@ -5,4 +5,7 @@ module.exports = {
         console.log("am i called");
         next();
     },
+    createEvent: function(req, res, next) {
+        next();
+    }
 }

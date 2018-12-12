@@ -10,7 +10,9 @@ var schema = new mongoose.Schema({
     },
     name: String,
     description: String,
-    members: Array 
+    interested: Number,
+    notIntereseted: Number,
+    comments: Array
 });
 
 module.exports = mongoose.model('eventsDb', schema);

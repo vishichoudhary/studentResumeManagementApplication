@@ -11,6 +11,9 @@ const functions = require('functions'),
 router.route('/profile')
     .post(authFilter.isLoggedIn, userResources.profile, userControllers.profile, responses.genericResponse);
 
+router.route('/createEvent')
+    .post(userResources.createEvent, userControllers.createEvent, responses.genericResponse);
+
 app.use('/', router);
 
 module.exports = app;
