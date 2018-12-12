@@ -23,7 +23,8 @@ module.exports = {
             description: req.body.description,
             interested: 0,
             notInterested: 0,
-            comments: []
+            comments: [],
+            createdAt: new Date()
         })
         event.save(function(err){
             if(err){
