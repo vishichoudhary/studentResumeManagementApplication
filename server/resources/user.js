@@ -7,5 +7,8 @@ module.exports = {
     },
     createEvent: function(req, res, next) {
         next();
+    },
+    joinClub: function(req, res, next){
+        next();
     }
 }

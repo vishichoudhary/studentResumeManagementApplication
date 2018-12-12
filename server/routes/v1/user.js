@@ -14,6 +14,12 @@ router.route('/profile')
 router.route('/createEvent')
     .post(userResources.createEvent, userControllers.createEvent, responses.genericResponse);
 
+router.route('/joinClub')
+    .post(userResources.joinClub, userControllers.joinClub, responses.genericResponse);
+
+router.route('/acceptRequest')
+    .post(userResources.joinClub, userControllers.joinClub, responses.genericResponse);
+
 app.use('/', router);
 
 module.exports = app;

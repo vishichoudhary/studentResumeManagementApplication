@@ -9,6 +9,8 @@ var schema = new mongoose.Schema({
         max: 36
     },
     name: String,
+    from: String,
+    to: String,
     description: String,
     interested: Number,
     notIntereseted: Number,

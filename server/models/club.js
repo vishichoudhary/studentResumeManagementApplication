@@ -34,7 +34,8 @@ var schema = new mongoose.Schema({
         name: String
     },
     totalMembers: Number,
-    members: Array
+    members: Array,
+    requests: Array
 });
 
 module.exports = mongoose.model('clubsDb', schema);
